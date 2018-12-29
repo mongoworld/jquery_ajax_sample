@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+  src="http://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(function(){
+		// 목록조회 시 버튼 클릭 이벤트
+		$("#listBtn").click(function(){
+			$.ajax({
+				url : "./list.jsp",
+				type : 'GET',
+				dataType : 'html',
+				success : function(data){
+					$("table").html(data);
+				}
+			})
+		})
+	})
+</script>  
+</head>
+<body>
+	<input type="button" id="listBtn" value="조회" />
+	<!--  해당 빈 껍데기에 태그 목록을 동적으로 추가  -->
+	<table width="100%" border="1"></table>
+</body>
+</html>
