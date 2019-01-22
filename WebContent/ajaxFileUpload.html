@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+  src="http://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="http://malsup.github.io/min/jquery.form.min.js"></script>
+  <script type="text/javascript">
+  	$(function(){
+  		$("#sendBtn").click(function(){
+  			$("#frm").ajaxForm({
+  				beforeSubmit : function(){
+  					if($("input[name=textName]").val() == "") {
+  						alert("텍스트 입력하세요");
+  						return false;
+  					}
+  				},
+  				success : function(){
+  					alert("업로드가 성공되었습니다!!")
+  				}
+  			})
+  			$("#frm").submit();
+  		})
+  	})
+  </script>
+</head>
+<body>
+	<form id="frm" action="./getFileName.jsp" method="post" enctype="multipart/form-data">
+		<input type="text" name="textName" />
+		<input type="file" name="fileName" />
+		<input type="button" id="sendBtn" value="전송" />
+	</form>
+</body>
+</html>
